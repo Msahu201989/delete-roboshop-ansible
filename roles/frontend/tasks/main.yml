@@ -8,8 +8,6 @@
     state: started
     name: nginx
 
-
-
 - name: Removing old web content
   ansible.builtin.file:
     path: /usr/share/nginx/html
@@ -18,9 +16,14 @@
 - name: Download Nginx web content & extract
   ansible.builtin.unarchive:
     src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
-    dest: /tmp/frontend.zip
+    dest: /tmp
     remote_src: yes
 
+- name: Copy extracted content
+  ansible.builtin.copy:
+    src: /tmp/frontend-main/static/
+    dest: /usr/share/nginx/html
+    remote_src: yes
 
 #  mv frontend-main/static/* . &>>$LOG_FILE
 #  mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>$LOG_FILE
