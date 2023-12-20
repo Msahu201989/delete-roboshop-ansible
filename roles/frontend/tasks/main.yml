@@ -8,21 +8,20 @@
     state: started
     name: nginx
 
-- name: Download foo.conf
-  ansible.builtin.get_url:
-    url: https://github.com/roboshop-devops-project/frontend/archive/main.zip
-    dest: /tmp/frontend.zip
+
 
 - name: Removing old web content
   ansible.builtin.file:
     path: /usr/share/nginx/html
     state: absent
 
+- name: Download Nginx web content & extract
+  ansible.builtin.unarchive:
+    src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
+    dest: /tmp/frontend.zip
+    remote_src: yes
 
-#  echo Extracting Web Content
-#  unzip /tmp/frontend.zip &>>/tmp/frontrnd
-#  echo status = $?
-#
+
 #  mv frontend-main/static/* . &>>$LOG_FILE
 #  mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>$LOG_FILE
 #  echo status = $?
