@@ -26,11 +26,11 @@
     remote_src: yes
 
 
-- name: Copy configuration file
-  ansible.builtin.copy:
-    src: roboshop.conf
-    dest: /etc/nginx/default.d/roboshop.conf
-    remote_src: yes
+- name:
+    ansible.builtin.copy:
+      src: roboshop.conf
+      dest: /etc/nginx/default.d/roboshop.conf
+
 
 - name: Start service httpd, if not started
   ansible.builtin.service:
