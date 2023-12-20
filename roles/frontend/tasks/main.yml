@@ -28,7 +28,7 @@
 
 - name: Copy configuration file
   ansible.builtin.copy:
-    src: rosboshop.conf
+    src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
     remote_src: yes
 
