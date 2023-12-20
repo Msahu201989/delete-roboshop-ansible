@@ -25,6 +25,11 @@
     dest: /usr/share/nginx/html
     remote_src: yes
 
+- name: Start service httpd, if not started
+  ansible.builtin.service:
+    name: nginx
+    state: started
+
 #  mv frontend-main/static/* . &>>$LOG_FILE
 #  mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>$LOG_FILE
 #  echo status = $?
