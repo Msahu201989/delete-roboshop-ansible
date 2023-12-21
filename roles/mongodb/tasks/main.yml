@@ -21,7 +21,7 @@
     state: restarted
     enabled: yes
 
-- name: Downloading MongoDB Schema
+- name: Downloading Schema Files
   ansible.builtin.unarchive:
     src: https://github.com/roboshop-devops-project/mongodb/archive/main.zip
     dest: /tmp
@@ -32,6 +32,6 @@
     file: "/tmp/mongodb-main/{{item}}.js"
     idempotent: yes
   loop:
-    - user
     - catalogue
+    - users
 
