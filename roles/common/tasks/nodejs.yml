@@ -14,3 +14,6 @@
   community.general.npm:
     path: /home/roboshop/{{COMPONENT}}
   become_user: roboshop
+
+- name: import Systemd Tasks
+  ansible.builtin.import_tasks: systemd.yml
