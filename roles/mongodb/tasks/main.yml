@@ -1,21 +1,20 @@
-- name: Setup mongodb Repo
+- name: Setup MongoDB Repo
   ansible.builtin.copy:
     src: mongo.repo
     dest: /etc/yum.repos.d/mongo.repo
 
-- name: Installing Mongo-DB Package
+- name: Install MongoDB Package
   ansible.builtin.yum:
     name: mongodb-org
     state: installed
 
-
-- name: update mongodb Listen Address
+- name: Update MongoDB Listen address
   ansible.builtin.replace:
     path: /etc/mongod.conf
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
 
-- name: Start Mongodb service
+- name: Start MongoDB Service
   ansible.builtin.systemd:
     name: mongod
     state: restarted
@@ -34,4 +33,3 @@
   loop:
     - catalogue
     - users
-
