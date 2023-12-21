@@ -27,11 +27,13 @@
     dest: /tmp
     remote_src: yes
 
+- name: Load Catalogue Service Schema
+  community.mongodb.mongodb_shell:
+    file: "/tmp/mongodb-main/catalogue.js"
+    idempotent: yes
 
-#echo "Load Catalogue Service Schema"
-#mongo < catalogue.js &>>$LOG_FILE
-#echo status = $?
-#
-#echo "Load USers service Schema"
-#mongo < users.js &>>$LOG_FILE
-#echo status = $?
+- name: Load User Service Schema
+  community.mongodb.mongodb_shell:
+    file: "/tmp/mongodb-main/user.js"
+    idempotent: yes
+
